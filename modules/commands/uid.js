@@ -13,7 +13,7 @@ module.exports.run = function({ api, event, args }){
   get(`https://api-caochungdat.bokdepzai.repl.co/facebook/act?user=${uid}`).then(response => {
       var txt;
       if (response.data.status == 404) txt = `Die acc or khóa wall`;
-      if (response.data.status == 200) txt = `${response.data.data.date.replace(' ', ' | ')}\n${response.data.data.uid}`;
+      if (response.data.status == 200) txt = `${response.data.data.date}\n${response.data.data.uid}\n${response.data.data.time}`;
       api.sendMessage(txt, event.threadID, event.messageID);
   }).catch(e => api.sendMessage(e, event.threadID, event.messageID));
 };
